@@ -1,7 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img">
-  <metadata>BPaaS site identity 5cb08a6e1e95db98</metadata>
-  <rect width="64" height="64" rx="16" fill="hsl(328 53% 30%)"/>
-  <path d="M39 0h25v64H25Z" fill="hsl(154 80% 57%)" opacity="0.82"/>
-  <g transform="rotate(95 32 32)" opacity="0.42"><rect x="16" y="16" width="32" height="32" rx="5" fill="none" stroke="#ffffff" stroke-width="7" transform="rotate(45 32 32)"/></g>
-  <text x="32" y="39" text-anchor="middle" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" letter-spacing="0">BR</text>
+  <title>방화 노래방 정보</title>
+  <rect width="64" height="64" rx="10" fill="hsl(328 50% 30%)"/>
+  <g transform="rotate(270 32 32)"><circle cx="16" cy="16" r="5" fill="hsl(328 24% 96%)"/><circle cx="32" cy="16" r="5" fill="hsl(328 24% 96%)"/><circle cx="48" cy="16" r="5" fill="hsl(328 24% 96%)"/><circle cx="16" cy="32" r="5" fill="hsl(328 24% 96%)"/><circle cx="32" cy="32" r="6" fill="hsl(31 68% 61%)"/><circle cx="48" cy="32" r="5" fill="hsl(328 24% 96%)"/><circle cx="16" cy="48" r="5" fill="hsl(328 24% 96%)"/><circle cx="32" cy="48" r="5" fill="hsl(328 24% 96%)"/><circle cx="48" cy="48" r="5" fill="hsl(328 24% 96%)"/></g>
 </svg>
