@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (2/2) · t3b04-bh-kb-info</title>
+  <meta name="description" content="t3b04-bh-kb-info에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://banghwa-room-info.mapo-room-guide.xyz/posts-2.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+        :root {
+            --bg-color: #0b0a09;
+            --main-gradient: linear-gradient(180deg, #0b0a09 0%, #171512 100%);
+            --card-surface: rgba(255, 255, 255, 0.02);
+            --border-color: rgba(255, 255, 255, 0.04);
+            --text-high: #f4ede2;
+            --text-low: #978e82;
+            --mustard: #d97706;
+            --glow: rgba(217, 119, 6, 0.12);
+            --font-serif: 'Gowun Batang', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--main-gradient);
+            color: var(--text-high);
+            font-family: var(--font-serif);
+            line-height: 1.85;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 660px;
+            margin: 0 auto;
+            padding: 90px 24px;
+            width: 100%;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .blog-header::after {
+            content: '';
+            display: block;
+            width: 35px;
+            height: 1px;
+            background: var(--mustard);
+            margin: 20px auto 0;
+            opacity: 0.4;
+            box-shadow: 0 0 6px var(--mustard);
+        }
+
+        .blog-sub {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--mustard);
+            font-family: var(--font-sans);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .blog-title {
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.45;
+            letter-spacing: -0.01em;
+        }
+
+        .blog-date {
+            font-size: 0.85rem;
+            color: var(--text-low);
+            margin-top: 10px;
+            font-family: var(--font-sans);
+        }
+
+        .essay-content {
+            font-size: 1.08rem;
+            color: var(--text-high);
+            text-align: justify;
+        }
+
+        .essay-p {
+            margin-bottom: 28px;
+            text-indent: 10px;
+        }
+
+        .highlight-quote {
+            background: var(--card-surface);
+            border-left: 2px solid var(--mustard);
+            padding: 20px 24px;
+            margin: 36px 0;
+            border-radius: 0 8px 8px 0;
+            backdrop-filter: blur(8px);
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .quote-inner {
+            font-style: italic;
+            color: #fffbeb;
+            font-size: 1.02rem;
+        }
+
+        .comments {
+            margin-top: 75px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 40px;
+        }
+
+        .comments-label {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--mustard);
+            letter-spacing: 0.12em;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+        }
+
+        .comment-node {
+            background: var(--card-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .comment-node:hover {
+            border-color: rgba(217, 119, 6, 0.22);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .comment-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+        }
+
+        .author-name {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .post-time {
+            color: var(--text-low);
+        }
+
+        .stars {
+            color: var(--mustard);
+            font-size: 0.75rem;
+            margin-top: 2px;
+        }
+
+        .text-body {
+            font-size: 0.92rem;
+            color: var(--text-high);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 35px 24px;
+            border-top: 1px solid var(--border-color);
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--text-low);
+            letter-spacing: 0.05em;
+        }
+
+        .mustard-glow {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 16px;
+            }
+
+            .blog-title {
+                font-size: 1.55rem;
+            }
+
+            .essay-content {
+                font-size: 1.02rem;
+            }
+        }
+    </style>
+  <meta property="og:title" content="글 목록 (2/2) · t3b04-bh-kb-info">
+  <meta property="og:description" content="t3b04-bh-kb-info에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://banghwa-room-info.mapo-room-guide.xyz/posts-2.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header class="blog-header">
+            <div class="mustard-glow"></div>
+            <div class="blog-sub">FLIGHT AND TUNE</div>
+            <div class="blog-title">날아가는 비행기의 붉은 불빛 너머 스러지는 노랫가락의 여정</div>
+            <div class="blog-date">2026. 05. 27</div>
+        </header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 40개 · 2/2 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0148.html">방화 노래방 정보 비교 분석을 통한 합정 셔츠룸 단골들이 뽑은 핫플 매거진 탐독</a>
+        <p class="post-item__summary">과연 당신이 자주 찾는 공간은 진정한 의미의 핫플레이스라고 할 수 있을까요? 방화 노래방 정보 흐름을 주시하다 보면 합정 지역에 새롭게 떠오르는 곳들이 많은데, 과연 그 기준은 무엇인지 궁금해질 때</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0034.html">방화 노래방 정보 확인 전 필수 체크 합정 노래방 추천정보</a>
+        <p class="post-item__summary">노래방은 무조건 밤늦게 가야 즐겁다는 것은 흔한 오해입니다. 사실 많은 사람들이 저녁 피크 타임에 몰리면서 서비스 질이 낮아지거나 대기 시간이 길어지는 현상을 겪습니다. 합정 지역에서 여유로운 시간</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0035.html">방화 노래방 정보 말고 확인하는 연남 클럽 추천정보 조건</a>
+        <p class="post-item__summary">성공적인 밤을 위한 클럽 방문은 음악, 분위기, 그리고 함께하는 인원 구성이 완벽하게 조화를 이루어야 합니다. 연남 지역의 핫플레이스를 방문하기 전에는 먼저 본인의 일행이 얼마나 되는지, 그리고 어</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0036.html">방화 노래방 정보 비교와 합정 셔츠룸 추천정보 선택 기준</a>
+        <p class="post-item__summary">여러분은 낯선 유흥 업소를 방문할 때 가장 우선적으로 고려하는 조건이 무엇인가요? 아마 시설의 청결도, 서비스의 질, 그리고 가격의 투명성일 것입니다. 합정 지역의 유흥 시설을 이용할 때 이런 고민</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0037.html">방화 노래방 정보 확인 후 떠나는 공덕 가라오케 추천정보 가이드</a>
+        <p class="post-item__summary">주변 지역의 유흥 시설을 찾을 때 방화 노래방 정보 등을 먼저 확인하는 습관은 합리적인 선택을 돕습니다. 특히 공덕 지역으로 이동하여 모임을 계획한다면 단순히 시설의 이름만 보고 결정하기보다 체계적</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0038.html">방화 노래방 정보 비교하며 배우는 상수 마사지 추천정보 판단 기준</a>
+        <p class="post-item__summary">다양한 지역 정보를 습득하다 보면 방화 노래방 정보 외에도 휴식과 관련된 여러 업소를 접하게 됩니다. 특히 상수 인근에서 마사지 숍을 고를 때 가격과 서비스 품질이라는 두 가지 선택지를 대조하는 방</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0039.html">방화 노래방 정보 보다가 알게 된 망원 노래방 추천정보 예약 실패 사례</a>
+        <p class="post-item__summary">방화 노래방 정보 등을 검색하며 유흥 시설을 찾는 이들이 종종 망원 지역에서 겪는 예약 실패 사례는 공통적인 원인을 가집니다. 가장 흔한 실수는 사전에 예약 절차를 간과하고 무작정 현장을 방문하는 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0040.html">방화 노래방 정보 찾아 홍대 노래방 추천정보 접근성 확인하기</a>
+        <p class="post-item__summary">평소 방화 노래방 정보 등 지역 내 유흥 정보를 습득하는 분들이라면 홍대 일대의 업소를 찾을 때도 접근성을 우선적으로 고려해야 합니다. 대중교통 이용이 용이한지, 아니면 주차 공간이 충분히 확보되어</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0041.html">방화 노래방 정보 및 공덕 셔츠룸 추천정보 알아보기</a>
+        <p class="post-item__summary">오랜만에 만난 지인들과 저녁 식사를 마치고 마땅한 공간을 찾지 못해 당황했던 경험이 있을 것입니다. 평소 접하던 방화 노래방 정보 범위 내에서는 도무지 갈피를 잡기 어려울 때가 많습니다. 특히 인근</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0042.html">방화 노래방 정보와 연남 유흥 추천정보의 진실</a>
+        <p class="post-item__summary">흔히들 연남 지역의 유흥이 단순히 화려하기만 하다고 생각하는 오해가 있습니다. 하지만 방화 노래방 정보 등을 토대로 유흥 문화를 접하던 이들에게 연남은 생각보다 정교한 시간대별 운영 전략이 필요한 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0043.html">방화 노래방 정보 찾을 때 마곡 가라오케 추천정보</a>
+        <p class="post-item__summary">쾌적한 환경, 합리적인 비용, 그리고 적절한 서비스 구성은 가라오케 선택의 기본 충족 조건입니다. 많은 이들이 방화 노래방 정보만을 고집하다가 정작 마곡의 수준 높은 시설을 놓치는 경우가 많습니다.</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0044.html">방화 노래방 정보 확인 후 마곡 유흥 추천정보 활용</a>
+        <p class="post-item__summary">여러분은 오늘 저녁, 어떤 기준으로 유흥 업소를 선택하고 계신가요? 단순히 가까운 방화 노래방 정보만 찾거나 지인의 추천에만 의존하는 것은 아닌지 다시 한번 생각할 필요가 있습니다. 마곡은 선택지가</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/juice-1.html">방화 노래방 정보 안내</a>
+        <p class="post-item__summary">방화 지역의 노래방은 다양한 테마와 시설을 갖추고 있어 방문자의 취향에 따라 선택지가 넓습니다. 일반적인 노래방 정보 사이트에서는 해당 지역의 업소 현황, 이용 시간, 기본 서비스 내용 등을 체계적</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/juice-2.html">방화 노래방 정보 안내</a>
+        <p class="post-item__summary">방화 지역의 노래방 정보를 확인할 때는 지역 기반 정보 사이트가 도움이 될 수 있습니다. 노래방 안내는 대체로 업소 유형, 주변 환경, 이용 가능한 시설 등에 대해 설명하는 형태로 구성됩니다. 이를</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-1.html">방화 노래방 정보 안내</a>
+        <p class="post-item__summary">방화 지역의 노래방을 선택할 때는 주변 환경을 꼼꼼히 비교하는 것이 중요합니다. 방화동 일대는 주거 지역과 상업 지역이 혼합되어 있어, 소음 문제나 접근성에 따라 적합한 장소가 다를 수 있습니다. </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-2.html">방화 노래방 방문을 위한 정보 및 안전 주의사항</a>
+        <p class="post-item__summary">방화 지역에서는 노래방을 찾는 고객들이 매년 꾸준히 증가하고 있으며, 이에 따라 각 업소에서는 더 쾌적하고 안전한 환경을 제공하고 있습니다. 하지만 방문 전 반드시 미리 알아두어야 할 사항들이 있으</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-3.html">방화 노래방 정보</a>
+        <p class="post-item__summary">방화 지역에는 다양한 노래방 업소가 위치해 있으며, 각 업소는 크기·운영 방식·이용 시간대마다 서로 다른 특성을 보여줍니다. 이 페이지는 방화 노래방에 대한 일반적인 정보를 안내하는 것으로, 방문이</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/qa-001-1pjkptd.html">방화 노래방 정보 처음 알아볼 때 실제로 많이 묻는 질문 5가지</a>
+        <p class="post-item__summary">방화 지역에서 노래방을 처음 이용하려는 분들은 위치 접근성, 주차 가능 여부, 주변 편의시설 등을 먼저 확인합니다. 대중교통 이용 시 역세권 여부와 도보 거리, 자차 이용 시 주차 공간 확보가 중요</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/review-001.html">글룸헤이븐 1판과 2판, 중고 매입자의 시각에서 본 밸런스 변경과 절판된 확장팩의 가치</a>
+        <p class="post-item__summary">글룸헤이븐, 이 게임은 중고 매입자들에게는 정말 특별한 의미가 있습니다. 이유는 간단합니다. 이 게임은 다양한 버전과 확장팩이 존재하며, 특히 1판과 2판 사이의 클래스 카드 스탯 차이와 밸런스 변</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/review-002.html">형님이 딱 한마디만 할게, 방화 노래방 정보보다 무서운 건 2013 년 6 월의 그 그래프야</a>
+        <p class="post-item__summary">형님, 스노든이 뭐 어쩌고 저쩌고 하는 뉴스들 다 잊어버려. 진짜 중요한 건 언론이 스크롤도 내리지 않고 넘어간 '슬라이드 7 번'의 구석에 박힌 그 작은 각주야.</p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <a class="pager__link" href="posts.html">1</a>
+      <span class="pager__current">2</span>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
